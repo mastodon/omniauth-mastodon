@@ -3,10 +3,13 @@ require 'omniauth-oauth2'
 module OmniAuth
   module Strategies
     class Mastodon < OmniAuth::Strategies::OAuth2
+      DEFAULT_SCOPE = 'read'.freeze
+
       option :name, 'mastodon'
 
       option :credentials
       option :identifier
+      option :authorize_options, [:scope]
 
       option :client_options, {
         authorize_url: '/oauth/authorize',
@@ -45,6 +48,12 @@ module OmniAuth
 
       def callback_url
         full_host + script_name + callback_path
+      end
+
+      def authorize_params
+        super.tap do |params|
+          params[:scope] ||= DEFAULT_SCOPE
+        end
       end
 
       private

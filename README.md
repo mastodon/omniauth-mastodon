@@ -20,7 +20,7 @@ Example:
 
 ```ruby
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :mastodon, credentials: lambda { |domain, callback_url|
+  provider :mastodon, scope: 'read write follow', credentials: lambda { |domain, callback_url|
     Rails.logger.info "Requested credentials for #{domain} with callback URL #{callback_url}"
 
     existing = MastodonClient.find_by(domain: domain)

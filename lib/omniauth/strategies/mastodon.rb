@@ -60,7 +60,7 @@ module OmniAuth
 
       def get_identifier
         form = OmniAuth::Form.new(title: 'Mastodon Login')
-        form.text_field 'Your full Mastodon identifier', 'identifier'
+        form.text_field 'Your full Mastodon identifier (username@domain)', 'identifier'
         form.button 'Login'
         form.to_response
       end

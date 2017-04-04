@@ -71,10 +71,10 @@ module OmniAuth
       end
 
       def identifier
-        binding.pry
-        i = options.identifier || request.params['identifier'] || (env['omniauth.params'].is_a?(Hash) ? env['omniauth.params']['identifier'] : nil)
+        i = options.identifier || request.params['identifier'] || (env['omniauth.params'].is_a?(Hash) ? env['omniauth.params']['identifier'] : nil) || session[:identifier]
         i = i.downcase.strip unless i.nil?
         i = nil if i == ''
+        session[:identifier] = i unless i.nil?
         i
       end
 

@@ -71,6 +71,7 @@ module OmniAuth
       end
 
       def identifier
+        binding.pry
         i = options.identifier || request.params['identifier'] || (env['omniauth.params'].is_a?(Hash) ? env['omniauth.params']['identifier'] : nil)
         i = i.downcase.strip unless i.nil?
         i = nil if i == ''

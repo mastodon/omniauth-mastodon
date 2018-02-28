@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.email         = "eugen@zeonfederated.com"
   spec.description   = "OmniAuth Strategy for Mastodon"
   spec.summary       = spec.description
-  spec.homepage      = "https://github.com/Gargron/omniauth-mastodon"
+  spec.homepage      = "https://github.com/tootsuite/omniauth-mastodon"
   spec.licenses      = %w(MIT)
   spec.files         = %w(omniauth-mastodon.gemspec) + Dir['lib/**/*.rb']
   spec.name          = "omniauth-mastodon"

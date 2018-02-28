@@ -10,13 +10,14 @@ module OmniAuth
       option :credentials
       option :identifier
       option :authorize_options, [:scope]
+      option :domain
 
       option :client_options, {
         authorize_url: '/oauth/authorize',
         token_url: '/oauth/token'
       }
 
-      uid { identifier }
+      uid { extra.raw_info['id'] }
 
       info do
         {

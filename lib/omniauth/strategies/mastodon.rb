@@ -17,7 +17,7 @@ module OmniAuth
         token_url: '/oauth/token'
       }
 
-      uid { extra.raw_info['id'] }
+      uid { raw_info['id'] }
 
       info do
         {

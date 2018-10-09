@@ -60,10 +60,22 @@ module OmniAuth
       private
 
       def get_identifier
-        form = OmniAuth::Form.new(title: 'Mastodon Login')
-        form.text_field 'Your full Mastodon identifier (username@domain)', 'identifier'
-        form.button 'Login'
-        form.to_response
+        I18n.with_locale(locale) do
+          form = OmniAuth::Form.new(title: translate('.omniauth.mastodon.title'))
+          form.text_field translate('.omniauth.mastodon.text'), 'identifier'
+          form.button translate('.omniauth.mastodon.button')
+          form.to_response
+        end
+      end
+
+      def translate(t)
+        I18n.exists?(t) ? I18n.t(t) : I18n.t(t, locale: :en)
+      end
+
+      def locale
+        loc = request.params['locale'] || session[:omniauth_login_locale] || I18n.default_locale
+        loc = :en unless I18n.locale_available?(loc)
+        loc
       end
 
       def start_oauth

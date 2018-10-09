@@ -1,0 +1,6 @@
+ja:
+  omniauth:
+    mastodon:
+      title: 'Mastodon ログイン'
+      text: 'ドメインを含めたIDを入力してください (例: username@domain)'
+      button: 'ログイン'

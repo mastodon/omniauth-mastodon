@@ -1,0 +1,6 @@
+en:
+  omniauth:
+    mastodon:
+      title: 'Mastodon Login'
+      text: 'Your full Mastodon identifier (username@domain)'
+      button: 'Login'
